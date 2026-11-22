@@ -296,4 +296,4 @@ El primero descarga unos 542 MB a la carpeta `data/crudo/`.
 
 ## Equipo
 
-Memo Ortiz y Andrés. Proyecto de hackathon, publicado en la organización CUBO-IA de GitHub.
+Memo Ortiz y Diego Andrés López. Proyecto de hackathon, publicado en la organización CUBO-IA de GitHub.
