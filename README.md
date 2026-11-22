@@ -85,7 +85,6 @@ Antes de correrla, copiar dentro de esta carpeta el archivo `claves.txt` que ent
 Después abrir en el navegador: `http://localhost:5050`
 
 Notas para Windows:
-- El repositorio es privado. Al clonar, Git puede pedir que se inicie sesión con una cuenta de GitHub que tenga acceso.
 - Alternativa sin Git: en la página del repositorio en GitHub, botón **Code** y luego **Download ZIP**; descomprimir y entrar a esa carpeta en lugar de ejecutar los dos primeros comandos.
 - Si el comando `py` no existe, usar `python` en su lugar: `python -m venv .venv`.
 - No hace falta "activar" el entorno virtual: los comandos de arriba llaman directamente al Python del entorno, y así se evitan los bloqueos de scripts de PowerShell.
