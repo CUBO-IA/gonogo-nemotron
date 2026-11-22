@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const salud = await (await fetch("/api/salud")).json();
     if (!salud.ia_configurada) {
-      avisar("La IA no está configurada: faltan las llaves en el archivo .env. Vas a ver el mercado, sin simulación ni redacción.", true);
+      avisar("La IA no está configurada: falta el archivo claves.txt en la carpeta del proyecto. Vas a ver el mercado, sin simulación ni redacción.", true);
     }
   } catch (_) {}
 

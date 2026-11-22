@@ -30,3 +30,4 @@ data/calibracion.json
 
 # Claves de API: no se suben, se entregan por privado
 .env
+claves.txt

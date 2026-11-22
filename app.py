@@ -133,6 +133,8 @@ def salud():
     if config.OPENROUTER_API_KEY:
         proveedores.append({"proveedor": "openrouter", "modelo": config.OPENROUTER_MODELO})
         proveedores.append({"proveedor": "openrouter-respaldo", "modelo": config.OPENROUTER_MODELO_RESPALDO})
+    if config.NVIDIA_API_KEY and config.NVIDIA_MODELO:
+        proveedores.append({"proveedor": "nvidia", "modelo": config.NVIDIA_MODELO})
     if config.GEMINI_API_KEY:
         proveedores.append({"proveedor": "gemini", "modelo": config.GEMINI_MODELO})
     if config.GROQ_API_KEY and config.GROQ_MODELO:

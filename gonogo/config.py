@@ -14,6 +14,10 @@ RUTA_CATALOGO = DATA / "catalogo.json"
 RUTA_MUESTRA = DATA / "personas_muestra.json"
 
 load_dotenv(RAIZ / ".env")
+# Las mismas claves pueden venir en "claves.txt": un nombre visible en cualquier computadora
+# (en Mac, ".env" queda oculto). Si existen los dos archivos, manda lo que diga ".env".
+# "utf-8-sig" tolera el archivo si alguien lo guarda con el Bloc de notas de Windows.
+load_dotenv(RAIZ / "claves.txt", encoding="utf-8-sig")
 
 PORT = int(os.getenv("PORT", "5050"))
 

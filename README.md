@@ -76,7 +76,7 @@ py -m venv .venv
 .venv\Scripts\python -m pip install -r requirements.txt
 ```
 
-Antes de correrla, copiar dentro de esta carpeta el archivo `.env` que entrega el equipo (ver "Las claves de IA"). Después:
+Antes de correrla, copiar dentro de esta carpeta el archivo `claves.txt` que entrega el equipo (ver "Las claves de IA"). Después:
 
 ```
 .venv\Scripts\python app.py
@@ -114,7 +114,7 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
-Antes de correrla, copiar dentro de esta carpeta el archivo `.env` que entrega el equipo (ver "Las claves de IA"). Después:
+Antes de correrla, copiar dentro de esta carpeta el archivo `claves.txt` que entrega el equipo (ver "Las claves de IA"). Después:
 
 ```
 .venv/bin/python app.py
@@ -133,13 +133,13 @@ No hay que instalar de nuevo. Entrar a la carpeta del proyecto y ejecutar solo e
 
 ---
 
-## Las claves de IA (archivo `.env`)
+## Las claves de IA (archivo `claves.txt`)
 
-- Las claves **no están en el repositorio**: GitHub no permite subir claves de API. El equipo entrega por privado un archivo comprimido, `claves-gonogo.zip`, que contiene un solo archivo llamado `.env` con claves gratuitas.
-- **Qué hacer con él:** descomprimirlo y copiar el archivo `.env` dentro de la carpeta del proyecto, al lado de `app.py`. No hay que crear cuentas ni configurar nada más.
+- Las claves **no están en el repositorio**: GitHub no permite subir claves de API. El equipo entrega por privado un archivo de texto llamado `claves.txt`, con claves gratuitas.
+- **Qué hacer con él:** copiarlo dentro de la carpeta del proyecto, al lado de `app.py`. Debe llamarse exactamente `claves.txt`. No hay que crear cuentas ni configurar nada más.
 - Esas claves son temporales: el equipo las dejará activas durante el periodo de evaluación.
 - Las claves son de planes gratuitos y tienen cupo diario. Como referencia: el plan gratuito de OpenRouter permitía 50 consultas por día (medido el 22 de noviembre de 2026) y un análisis completo usa unas 4 consultas. Cuando un proveedor se queda sin cupo, la app pasa sola al siguiente.
-- El archivo `.env.example` documenta todas las variables. Si las claves entregadas dejaran de funcionar, se pueden crear claves propias gratuitas y pegarlas en `.env`:
+- El archivo `.env.example` documenta todas las variables. Si las claves entregadas dejaran de funcionar, se pueden crear claves propias gratuitas y pegarlas en `claves.txt`, cada una después del signo igual de su variable:
 
 | Variable | Proveedor | Dónde se obtiene |
 |---|---|---|
@@ -149,7 +149,8 @@ No hay que instalar de nuevo. Entrar a la carpeta del proyecto y ejecutar solo e
 | `GROQ_API_KEY` | Groq | https://console.groq.com/keys |
 
 - Con una sola clave válida la app ya funciona. Sin ninguna, la app abre y carga los datos, pero avisa que la IA no respondió.
-- Después de cambiar el archivo `.env` hay que detener la app y volver a correrla.
+- Después de cambiar el archivo `claves.txt` hay que detener la app y volver a correrla.
+- La app también lee un archivo `.env` con el mismo contenido, si existe. Si están los dos, manda lo que diga `.env`.
 - Otras variables: `PORT` (puerto, por defecto 5050) y `POBLACION_SV` (opcional; por defecto 6029976, la población total del Censo 2024).
 
 ---
@@ -217,7 +218,7 @@ Al pie de cada reporte, la línea "IA que respondió" dice qué proveedor y mode
 gonogo-nemotron/
 ├── app.py                    servidor Flask y rutas de la app
 ├── requirements.txt          dependencias de Python
-├── .env                      claves gratuitas (no viene en el repositorio: se copia aquí)
+├── claves.txt                claves gratuitas (no viene en el repositorio: se copia aquí)
 ├── .env.example              plantilla con todas las variables
 ├── gonogo/
 │   ├── config.py             configuración, escalas del veredicto y supuestos
@@ -265,8 +266,8 @@ El primero descarga unos 542 MB a la carpeta `data/crudo/`.
 | `git` no se reconoce | Instalar Git desde https://git-scm.com/downloads |
 | Falla la instalación de dependencias | Comprobar la versión con `py --version` (Windows) o `python3 --version`. Debe ser 3.11 o superior. |
 | La página no abre | Comprobar que la ventana donde corre la app siga abierta y diga que está corriendo en `http://localhost:5050`. |
-| El puerto 5050 está ocupado | Abrir `.env`, cambiar `PORT=5050` por otro número (por ejemplo `PORT=5051`), volver a correr la app y abrir esa dirección. |
-| "La IA no respondió" | Comprobar que el archivo `.env` esté dentro de la carpeta del proyecto, al lado de `app.py`, y que se llame exactamente `.env`. Si está, los planes gratuitos tienen cupo. Esperar un momento y volver a intentar, o usar el botón **Volver a pedir** en las recomendaciones. |
+| El puerto 5050 está ocupado | Abrir `claves.txt`, cambiar `PORT=5050` por otro número (por ejemplo `PORT=5051`), volver a correr la app y abrir esa dirección. |
+| "La IA no respondió" | Comprobar que el archivo `claves.txt` esté dentro de la carpeta del proyecto, al lado de `app.py`, y que se llame exactamente `claves.txt` (no `claves (1).txt`). Si está, los planes gratuitos tienen cupo. Esperar un momento y volver a intentar, o usar el botón **Volver a pedir** en las recomendaciones. |
 | El análisis tarda | Los planes gratuitos pueden tardar hasta 2 minutos. No hay que recargar la página. |
 
 ---
