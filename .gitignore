@@ -1,0 +1,32 @@
+# Entorno virtual
+.venv/
+venv/
+
+# Variables de entorno (llaves de API)
+
+# Datos pesados y caché
+data/crudo/
+data/cache/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Respaldo del diseño anterior (no se sube)
+_respaldo_frontend_anterior/
+
+# No se suben a GitHub
+PLAN-GONOGO.md
+logo/gonogo_logo.ai
+logo/gonogo_referencia.png
+logo/bg.png
+scripts/calibrar.py
+data/calibracion.json
+
+# Claves de API: no se suben, se entregan por privado
+.env

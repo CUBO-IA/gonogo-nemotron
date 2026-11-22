@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>gonogo — intelligence for smarter decisions</title>
+  <meta name="description" content="Describí tu idea de producto digital y descubrí si hay mercado en El Salvador antes de construirla. Un reporte de realidad con veredicto: GO, NOT YET o NO-GO.">
+  <meta name="theme-color" content="#040508">
+  <link rel="icon" href="/logo/gonogo_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Host+Grotesk:wght@300..800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/static/img/bg.webp" media="(min-width: 701px)">
+  <link rel="stylesheet" href="/static/gonogo.css">
+  <script>
+    /* La cortina de inicio se muestra una vez por sesión y nunca con movimiento reducido. */
+    (function () {
+      var visto = false;
+      try { visto = sessionStorage.getItem("gonogo_intro") === "1"; } catch (e) {}
+      var reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.documentElement.classList.add(visto || reducido ? "listo" : "con-intro");
+    })();
+  </script>
+</head>
+<body>
+
+<!-- ============ CORTINA DE INICIO ============ -->
+<div class="intro fondo-marca" id="intro" aria-hidden="true">
+  <p class="intro-frase">
+    <span class="linea"><span>Construir dejó de</span></span>
+    <span class="linea"><span>ser lo difícil.</span></span>
+    <span class="linea tenue"><span>Lo difícil es saber si</span></span>
+    <span class="linea tenue"><span>alguien lo necesita.</span></span>
+  </p>
+  <div class="intro-pie">
+    <img src="/logo/gonogo_logo.png" alt="" height="22" style="height:22px;width:auto">
+    <span class="intro-seguir">Desliza o haz clic para continuar</span>
+    <span><span class="intro-cuenta" id="intro-cuenta">0</span> personas sintéticas</span>
+  </div>
+</div>
+
+<!-- ============ BARRA ============ -->
+<header class="barra" id="barra">
+  <a href="/" class="barra-logo" aria-label="gonogo, inicio">
+    <img src="/logo/gonogo_logo.png" alt="gonogo">
+  </a>
+  <nav class="barra-acciones">
+    <a href="/app" class="boton boton-chico">Analizar una idea</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero fondo-marca" id="hero">
+  <div class="hero-mapa" id="hero-mapa" aria-hidden="true"></div>
+
+  <div class="hero-cuerpo">
+    <h1 class="titular">
+      <span class="linea"><span>Go or no-go,</span></span>
+      <span class="linea"><span>before you build.</span></span>
+    </h1>
+    <p class="hero-bajada texto-grande hero-entra">
+      Describí tu idea y recibí un reporte de realidad sobre su mercado en El&nbsp;Salvador,
+      con un veredicto al final.
+    </p>
+  </div>
+
+  <form class="campo-idea hero-entra" data-idea>
+    <label class="solo-lectores" for="idea-hero">Tu idea, o el enlace de tu app o repositorio</label>
+    <textarea id="idea-hero" rows="1" placeholder="Describí tu idea, o pegá el enlace de tu app o de tu repo"></textarea>
+    <button class="boton" type="submit">Comienza ahora</button>
+  </form>
+  <p class="campo-nota hero-entra">
+    La contrastamos con 148,000 personas sintéticas de El&nbsp;Salvador, calibradas con el Censo&nbsp;2024.
+  </p>
+</section>
+
+<!-- ============ MANIFIESTO ============ -->
+<section class="manifiesto" id="manifiesto" aria-label="Por qué existe gonogo">
+  <div class="manifiesto-fijo">
+    <div class="contenedor">
+      <p id="manifiesto-texto">Con IA, cualquiera construye una app en un fin de semana. Lo que nadie te responde es si existe gente que la necesite, cuántos son, dónde están y si ese mercado te alcanza.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section class="papel seccion" id="como-funciona">
+  <div class="contenedor">
+    <header class="cabeza-seccion">
+      <h2 class="titulo">De una idea a un veredicto en cuatro pasos.</h2>
+      <p>Tarda alrededor de un minuto. Los paneles muestran la app con una idea de ejemplo; las cifras son ilustrativas.</p>
+    </header>
+
+    <!-- Paso 1 -->
+    <article class="paso">
+      <div class="paso-texto">
+        <span class="dato">Paso 1 de 4</span>
+        <h3 class="subtitulo">Describí</h3>
+        <p>Escribí la idea en unas líneas, o pegá el enlace de tu app o de tu repositorio de GitHub. Leemos el README o la página por vos.</p>
+      </div>
+      <div class="paso-panel">
+        <div class="panel">
+          <div class="panel-cabeza dato"><span>Tu idea</span><span>Ejemplo</span></div>
+          <div class="panel-cuerpo">
+            <p class="demo-escrito" id="demo-escrito" data-texto="Una app para encontrar plomeros y electricistas de confianza cerca de tu casa. Cobro 5 dólares al mes."></p>
+            <div class="demo-fuentes">
+              <span class="chip">Texto</span>
+              <span class="chip">Repositorio de GitHub</span>
+              <span class="chip">Enlace a tu app</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Paso 2 -->
+    <article class="paso">
+      <div class="paso-texto">
+        <span class="dato">Paso 2 de 4</span>
+        <h3 class="subtitulo">Tu usuario</h3>
+        <p>La IA propone quién la usaría y cómo ganarías dinero: suscripción, pago único, freemium, comisión o publicidad. Vos lo corregís antes de seguir.</p>
+      </div>
+      <div class="paso-panel">
+        <div class="panel">
+          <div class="panel-cabeza dato"><span>Perfil del usuario</span><span>Interpretación de la IA</span></div>
+          <div class="panel-cuerpo">
+            <div class="ficha">
+              <div class="campo">Quién</div>
+              <div class="valor">Personas adultas con casa propia o alquilada que necesitan reparaciones.</div>
+              <div class="campo">Edad</div>
+              <div class="valor">25 a 60 años</div>
+              <div class="campo">Zona</div>
+              <div class="valor"><span class="chip">urbano</span></div>
+              <div class="campo">Educación</div>
+              <div class="valor"><span class="chip">bachillerato</span><span class="chip">tecnico</span><span class="chip">universitario</span></div>
+              <div class="campo">Departamentos</div>
+              <div class="valor"><span class="chip vacio">Todo el país</span></div>
+              <div class="campo">Cómo gana dinero</div>
+              <div class="valor">Suscripción de $5 al mes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Paso 3 -->
+    <article class="paso">
+      <div class="paso-texto">
+        <span class="dato">Paso 3 de 4</span>
+        <h3 class="subtitulo">Tu mercado</h3>
+        <p>Nemotron nos dice qué parte de la gente cumple ese perfil y dónde vive. La aplicamos a los 6 millones de habitantes del país. Esto lo calcula el código, no la IA.</p>
+      </div>
+      <div class="paso-panel">
+        <div class="panel">
+          <div class="panel-cabeza dato"><span>Tamaño del mercado</span><span>Calibrado con el Censo 2024</span></div>
+          <div class="panel-cuerpo demo-mercado">
+            <div id="demo-mapa" style="color:#fff"></div>
+            <div>
+              <div class="cifra">11.4%</div>
+              <p class="cifra-unidad">de la población cumple el perfil: unas 687,000 personas</p>
+              <ul class="lista-barras">
+                <li><span>San Salvador</span><span class="num">38%</span><span class="pista"><i style="width:100%"></i></span></li>
+                <li><span>La Libertad</span><span class="num">17%</span><span class="pista"><i style="width:45%"></i></span></li>
+                <li><span>Santa Ana</span><span class="num">9%</span><span class="pista"><i style="width:24%"></i></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Paso 4 -->
+    <article class="paso">
+      <div class="paso-texto">
+        <span class="dato">Paso 4 de 4</span>
+        <h3 class="subtitulo">Tu veredicto</h3>
+        <p>24 personas del perfil reaccionan a tu idea con su propia voz. Sumamos mercado, aceptación e ingreso, y sale el veredicto.</p>
+      </div>
+      <div class="paso-panel">
+        <div class="panel">
+          <div class="panel-cabeza dato"><span>24 personas simuladas</span><span>Personas sintéticas</span></div>
+          <div class="panel-cuerpo">
+            <div class="personas" aria-hidden="true">
+              <i class="persona alto"></i><i class="persona medio"></i><i class="persona bajo"></i><i class="persona medio"></i><i class="persona ninguno"></i><i class="persona alto"></i><i class="persona bajo"></i><i class="persona bajo"></i><i class="persona medio"></i><i class="persona alto"></i><i class="persona bajo"></i><i class="persona ninguno"></i>
+              <i class="persona bajo"></i><i class="persona alto"></i><i class="persona medio"></i><i class="persona bajo"></i><i class="persona medio"></i><i class="persona ninguno"></i><i class="persona alto"></i><i class="persona bajo"></i><i class="persona medio"></i><i class="persona bajo"></i><i class="persona alto"></i><i class="persona bajo"></i>
+            </div>
+            <div class="leyenda">
+              <span class="alto"><i></i>Interés alto</span>
+              <span class="medio"><i></i>Medio</span>
+              <span><i></i>Bajo</span>
+              <span class="ninguno"><i></i>Ninguno</span>
+            </div>
+
+            <div class="demo-veredicto">
+              <div>
+                <p class="cita">“La última vez que se me dañó la bomba tardé tres días en encontrar a alguien. Cinco dólares los pago si el fontanero llega.”</p>
+                <p class="cita-autor">Mujer, 41 años, Santa Tecla</p>
+              </div>
+              <div>
+                <div class="sello notyet">NOT YET</div>
+                <p class="t-notyet" style="margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px">
+                  <span class="puntos" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span>
+                  <span class="dato" style="color:#fff;white-space:nowrap">6 de 10 puntos</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ LOS TRES VEREDICTOS ============ -->
+<section class="noche seccion" id="veredictos">
+  <div class="contenedor">
+    <h2 class="solo-lectores">Los tres veredictos</h2>
+
+    <div class="veredicto-fila go">
+      <div class="palabra">GO</div>
+      <div class="regla dato">8 a 10 puntos</div>
+      <p>Hay mercado, la gente simulada la quiere y el ingreso realista cubre tu meta. Construí.</p>
+    </div>
+    <div class="veredicto-fila notyet">
+      <div class="palabra">NOT YET</div>
+      <div class="regla dato">5 a 7 puntos</div>
+      <p>Hay señales a favor y algo sin comprobar. Te decimos cuál es la prueba más barata para salir de la duda.</p>
+    </div>
+    <div class="veredicto-fila nogo">
+      <div class="palabra">NO-GO</div>
+      <div class="regla dato">0 a 4 puntos</div>
+      <p>El mercado es chico o casi nadie la adoptaría. Mejor saberlo hoy que después de meses de trabajo.</p>
+    </div>
+
+    <div class="criterios">
+      <div class="criterios-texto">
+        <h3 class="subtitulo">La IA redacta. El veredicto lo decide el código.</h3>
+        <p>Tres criterios que suman 10 puntos. Si casi nadie de las personas simuladas muestra interés, el veredicto es NO-GO aunque el mercado sea grande.</p>
+      </div>
+      <div class="criterios-tabla">
+        <table class="tabla">
+          <thead>
+            <tr><th>Criterio</th><th>Vale</th><th>Cómo se ganan los puntos</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Tamaño del mercado</td><td>3</td><td>Un punto si el perfil es al menos el 1% de la población, dos desde el 5% y tres desde el 15%.</td></tr>
+            <tr><td>Aceptación simulada</td><td>4</td><td>Según el interés de las 24 personas: un punto desde 15%, dos desde 25%, tres desde 40% y cuatro desde 55%.</td></tr>
+            <tr><td>Ingreso realista frente a tu meta</td><td>3</td><td>Con los clientes que saldrían de quienes dijeron que pagarían: un punto si cubre la mitad de la meta, dos si la cubre y tres si la duplica.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUÉ TAN FIRME ES CADA COSA ============ -->
+<section class="papel seccion" id="firmeza">
+  <div class="contenedor">
+    <header class="cabeza-seccion">
+      <h2 class="titulo">Cada parte del reporte dice qué tan firme es.</h2>
+      <p>No todo pesa igual. Un conteo del censo no es lo mismo que una reacción simulada, y el reporte lo marca en cada bloque.</p>
+    </header>
+
+    <div class="firmeza-fila">
+      <h3 class="subtitulo">Tu mercado</h3>
+      <p>Qué parte de la población cumple el perfil, cuántas personas son, dónde viven y cómo se reparten.</p>
+      <span class="sello-firmeza">Dato calibrado con el Censo 2024</span>
+    </div>
+    <div class="firmeza-fila">
+      <h3 class="subtitulo">Tu usuario</h3>
+      <p>El perfil de quién usaría la idea. Lo podés corregir.</p>
+      <span class="sello-firmeza interpretacion">Interpretación de la IA</span>
+    </div>
+    <div class="firmeza-fila">
+      <h3 class="subtitulo">¿Te alcanza?</h3>
+      <p>Tres escenarios de ventas frente a tu meta, según a cuánta gente llegás y cuántas de las personas simuladas pagarían.</p>
+      <span class="sello-firmeza supuesto">Cálculo con supuestos</span>
+    </div>
+    <div class="firmeza-fila">
+      <h3 class="subtitulo">Aceptación y retratos</h3>
+      <p>Cómo reaccionan 24 personas sintéticas y qué las frena.</p>
+      <span class="sello-firmeza simulacion">Estimación simulada, no validada</span>
+    </div>
+    <div class="firmeza-fila">
+      <h3 class="subtitulo">Próximos pasos</h3>
+      <p>Riesgos, a quién entrevistar, cinco preguntas y la prueba más barata.</p>
+      <span class="sello-firmeza recomendacion">Recomendación</span>
+    </div>
+    <div class="firmeza-fila">
+      <h3 class="subtitulo">Recomendaciones</h3>
+      <p>Si las pedís: qué ajustar para el mercado salvadoreño, qué debe tener la primera versión y cómo subir tu puntaje.</p>
+      <span class="sello-firmeza recomendacion">Recomendación de la IA</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="cierre fondo-marca">
+  <div class="contenedor">
+    <h2 class="titular">Antes de construir, compruébalo.</h2>
+    <form class="campo-idea" data-idea>
+      <label class="solo-lectores" for="idea-cierre">Tu idea, o el enlace de tu app o repositorio</label>
+      <textarea id="idea-cierre" rows="1" placeholder="Describí tu idea, o pegá el enlace de tu app o de tu repo"></textarea>
+      <button class="boton" type="submit">Es tu turno</button>
+    </form>
+    <p class="campo-nota">gonogo evalúa la idea y su mercado. No revisa si el código funciona ni la calidad de la app.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PIE ============ -->
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie-fila">
+      <div class="pie-marca">
+        <img src="/logo/gonogo_logo_completo.png" alt="gonogo, intelligence for smarter decisions">
+      </div>
+      <div class="pie-nota">
+        <p>gonogo usa personas sintéticas de <a href="https://huggingface.co/datasets/nvidia/Nemotron-Personas-El-Salvador" target="_blank" rel="noopener">NVIDIA Nemotron-Personas-El-Salvador</a> (CC BY 4.0). Los datos demográficos están calibrados con el Censo 2024. Ninguna persona es real.</p>
+        <p>La proyección de aceptación es una simulación: orienta, y la demanda real se comprueba con personas reales.</p>
+        <p>Límites departamentales del mapa: © colaboradores de OpenStreetMap.</p>
+      </div>
+    </div>
+    <div class="pie-firma dato">
+      <span>Go or no-go, before you build.</span>
+      <span>Hackathon 2026, El Salvador</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/static/sv-puntos.js"></script>
+<script src="/static/mapa.js"></script>
+<script src="/static/home.js"></script>
+</body>
+</html>

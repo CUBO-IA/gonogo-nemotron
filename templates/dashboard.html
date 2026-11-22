@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analizar una idea — gonogo</title>
+  <meta name="theme-color" content="#040508">
+  <link rel="icon" href="/logo/gonogo_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Host+Grotesk:wght@300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/gonogo.css">
+</head>
+<body>
+
+<header class="barra" id="barra">
+  <a href="/" class="barra-logo" aria-label="gonogo, inicio">
+    <img src="/logo/gonogo_logo.png" alt="gonogo">
+  </a>
+  <nav class="barra-acciones">
+    <button class="boton boton-linea boton-chico" id="btn-nueva" type="button" hidden>Analizar otra idea</button>
+  </nav>
+</header>
+
+<main id="app">
+
+  <!-- ============ PANTALLA 1: LA IDEA ============ -->
+  <section id="pantalla-idea" class="pantalla activa">
+    <div class="idea" id="zona-idea">
+
+      <h1 class="titulo">¿Qué vas a construir?</h1>
+
+      <form id="form-idea" class="campo-idea" novalidate>
+        <label class="solo-lectores" for="entrada">Tu idea, o el enlace de tu app o repositorio</label>
+        <textarea id="entrada" rows="2" maxlength="2000"
+          placeholder="Describí tu idea en unas líneas, o pegá el enlace de tu app o de tu repositorio de GitHub"></textarea>
+        <button id="btn-analizar" class="boton" type="submit">Analizar idea</button>
+      </form>
+
+      <p class="aviso" id="aviso" role="status"></p>
+
+      <div class="ejemplos">
+        <span>O probá con un ejemplo:</span>
+        <button type="button" data-ejemplo="Una app para que la gente encuentre plomeros y electricistas de confianza cerca de su casa. Cobro 5 dólares al mes.">Plomeros y electricistas a domicilio</button>
+        <button type="button" data-ejemplo="Una app para que las tiendas de barrio lleven el fiado de sus clientes desde el celular y manden recordatorios de cobro por WhatsApp. Cobro 8 dólares al mes.">Fiado para tiendas de barrio</button>
+        <button type="button" data-ejemplo="Clases de inglés en línea para personas que trabajan en call centers y quieren subir de puesto. Cobro 15 dólares al mes.">Inglés para call centers</button>
+      </div>
+
+      <p class="campo-nota">gonogo evalúa la idea y su mercado. No revisa si el código funciona ni la calidad de la app.</p>
+    </div>
+  </section>
+
+  <!-- ============ PANTALLA 2: ANÁLISIS EN VIVO ============ -->
+  <section id="pantalla-analisis" class="pantalla noche">
+    <div class="analisis">
+      <aside class="riel">
+        <span class="dato" id="riel-origen">Análisis en curso</span>
+        <h1 class="subtitulo" id="riel-nombre">Leyendo tu idea</h1>
+        <p class="riel-resumen" id="riel-resumen"></p>
+
+        <ol class="riel-pasos">
+          <li id="riel-1"><span>Tu usuario</span><span class="dato"></span></li>
+          <li id="riel-2"><span>Tu mercado</span><span class="dato"></span></li>
+          <li id="riel-3"><span>24 personas simuladas</span><span class="dato"></span></li>
+          <li id="riel-4"><span>Veredicto</span><span class="dato"></span></li>
+        </ol>
+      </aside>
+
+      <div class="flujo" id="flujo" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============ PANTALLA 3: EL REPORTE ============ -->
+  <section id="pantalla-reporte" class="pantalla reporte">
+    <div id="reporte"></div>
+  </section>
+
+</main>
+
+<script src="/static/sv-puntos.js"></script>
+<script src="/static/mapa.js"></script>
+<script src="/static/fondo-ascii.js"></script>
+<script src="/static/animar.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
