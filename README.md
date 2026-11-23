@@ -23,7 +23,7 @@ GoNoGo evalúa la idea y su mercado. No revisa si el código funciona ni la cali
 | Regla | Cómo la cumple GoNoGo |
 |---|---|
 | Usar Nemotron | Usa el dataset `nvidia/Nemotron-Personas-El-Salvador` (148,000 personas sintéticas adultas) y los modelos Nemotron de NVIDIA para interpretar, simular y redactar. |
-| Solo IAs gratuitas, combinando varias | Una cadena de proveedores gratuitos: Nemotron por OpenRouter, Nemotron directo por NVIDIA, Gemini y Groq. Si uno falla o se queda sin cupo, responde el siguiente. |
+| Solo IAs gratuitas, combinando varias | Una cadena de proveedores gratuitos: Nemotron directo por NVIDIA, Nemotron por OpenRouter, Gemini y Groq. Si uno falla o se queda sin cupo, responde el siguiente. |
 | Ejecutable desde GitHub | Se clona, se instalan las dependencias, se copia el archivo de claves y se corre. Los datos necesarios ya vienen en el repositorio. |
 | README detallado | Este documento. |
 
@@ -197,13 +197,15 @@ El veredicto lo decide el código, no la IA. Se suman hasta **10 puntos**:
 
 | Orden | Proveedor | Modelo |
 |---|---|---|
-| 1 | OpenRouter | `nvidia/nemotron-3.5-lightning:free` |
-| 2 | OpenRouter (respaldo) | `nvidia/nemotron-3-ultra-550b-a55b:free` |
-| 3 | NVIDIA | `nvidia/nemotron-3.5-lightning-30b-a3b` |
+| 1 | NVIDIA | `nvidia/nemotron-3.5-lightning-30b-a3b` |
+| 2 | OpenRouter | `nvidia/nemotron-3.5-lightning:free` |
+| 3 | OpenRouter (respaldo) | `nvidia/nemotron-3-ultra-550b-a55b:free` |
 | 4 | Google | `gemini-3.5-flash-lite` |
 | 5 | Groq | `openai/gpt-oss-120b` |
 
-Para las recomendaciones, que son respuestas largas, después de OpenRouter se intenta primero el modelo grande de NVIDIA: `nvidia/nemotron-3-ultra-550b-a55b`.
+Para las recomendaciones, que son respuestas largas, se intenta primero el modelo grande de NVIDIA: `nvidia/nemotron-3-ultra-550b-a55b`.
+
+NVIDIA va primero porque responde en segundos; OpenRouter ofrece los mismos modelos Nemotron gratis, pero con cola de espera.
 
 Al pie de cada reporte, la línea "IA que respondió" dice qué proveedor y modelo contestó cada paso.
 

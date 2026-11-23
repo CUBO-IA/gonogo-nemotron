@@ -171,16 +171,8 @@ def _llamar_nvidia(sistema, usuario, modelo, api_key, esquema=None, espera=None)
 
 def _proveedores_disponibles(esquema=None, respuesta_larga=False):
     cadena = []
-    if config.OPENROUTER_API_KEY:
-        cadena.append((
-            f"openrouter/{config.OPENROUTER_MODELO}",
-            lambda s, u: _llamar_openrouter(s, u, config.OPENROUTER_MODELO, config.OPENROUTER_API_KEY),
-        ))
-        if config.OPENROUTER_MODELO_RESPALDO:
-            cadena.append((
-                f"openrouter/{config.OPENROUTER_MODELO_RESPALDO}",
-                lambda s, u: _llamar_openrouter(s, u, config.OPENROUTER_MODELO_RESPALDO, config.OPENROUTER_API_KEY),
-            ))
+    # Primero Nemotron directo desde NVIDIA: responde en segundos. OpenRouter sirve los mismos
+    # modelos gratis pero con cola (una simulación llegó a tardar 2 minutos), así que queda de respaldo.
     # Los nombres de los modelos de NVIDIA ya empiezan con "nvidia/": se muestran tal cual al pie del reporte.
     if respuesta_larga and config.NVIDIA_API_KEY and config.NVIDIA_MODELO_GRANDE:
         cadena.append((
@@ -193,6 +185,16 @@ def _proveedores_disponibles(esquema=None, respuesta_larga=False):
             config.NVIDIA_MODELO,
             lambda s, u: _llamar_nvidia(s, u, config.NVIDIA_MODELO, config.NVIDIA_API_KEY, esquema),
         ))
+    if config.OPENROUTER_API_KEY:
+        cadena.append((
+            f"openrouter/{config.OPENROUTER_MODELO}",
+            lambda s, u: _llamar_openrouter(s, u, config.OPENROUTER_MODELO, config.OPENROUTER_API_KEY),
+        ))
+        if config.OPENROUTER_MODELO_RESPALDO:
+            cadena.append((
+                f"openrouter/{config.OPENROUTER_MODELO_RESPALDO}",
+                lambda s, u: _llamar_openrouter(s, u, config.OPENROUTER_MODELO_RESPALDO, config.OPENROUTER_API_KEY),
+            ))
     if config.GEMINI_API_KEY:
         cadena.append((
             f"gemini/{config.GEMINI_MODELO}",
